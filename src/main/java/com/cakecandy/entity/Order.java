@@ -1,6 +1,6 @@
 package com.cakecandy.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import com.cakecandy.entity.types.OrderStatusType;
