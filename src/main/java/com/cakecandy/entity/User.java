@@ -12,30 +12,40 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class User {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "user_id")
   private Long userId;
-	
-  @Column(name = "user_email", nullable = false, unique = true)
-	private String userEmail;
 
-  @Column(name = "user_password", nullable = false)
-	private String userPassword;
+  @Column(name = "username", nullable = false, unique = true)
+  private String username;
 
-	@Column(name = "user_first_name", nullable = false)
-	private String userFirstName;
+  @Column(name = "password", nullable = false)
+  private String password;
 
-	@Column(name = "user_last_name", nullable = false)
-	private String userLastName;
-	
-	@Column(name = "phone", nullable = false)
-	private String phone;
+  @Column(name = "first_name", nullable = false)
+  private String firstName;
+
+  @Column(name = "last_name", nullable = false)
+  private String lastName;
+
+  @Column(name = "phone", nullable = false)
+  private String phone;
+
+  @Column(name = "email", nullable = false, unique = true)
+  private String email;
 
   @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "role_id", nullable = false)
-	private Role role;
+  @JoinColumn(name = "role_id", nullable = false)
+  private Role role;
 
   @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Order> orders;
+  private List<Address> addresses;
+
+  @OneToOne(mappedBy = "user")
+  private IdentityDocument identityDocument;
+
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+  private List<Order> orders;
 }

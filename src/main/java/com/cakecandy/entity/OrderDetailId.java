@@ -1,14 +1,9 @@
 package com.cakecandy.entity;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import java.io.Serializable;
 
 @Embeddable
 @Getter
@@ -16,10 +11,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class OrderDetailId implements Serializable{
+public class OrderDetailId implements Serializable {
+
   @Column(name = "order_id")
   private Long orderId;
 
   @Column(name = "product_id")
   private Long productId;
+
 }
